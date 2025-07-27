@@ -691,16 +691,26 @@ h1, h2, h3, h4, h5, h6, p, span, a, button, input, textarea, select, li {
     }
     
     .steps {
-        gap: 30px;
+        gap: 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
     }
     
     .step-arrow {
-        display: none;
+        display: block;
+        color: white;
+        font-size: 1rem;
+        margin: 0 -10px;
     }
 }
 
 @media (max-width: 768px) {
     .nav-links, .auth-buttons {
+        display: none;
+    }
+    
+    .auth-buttons {
         display: none;
     }
     
@@ -773,23 +783,57 @@ h1, h2, h3, h4, h5, h6, p, span, a, button, input, textarea, select, li {
         margin: 10px 0;
     }
     
-    /* תיקון נוסף לתצוגה במובייל */
-    .features, .steps, .audience-cards {
+    /* תצוגה אופקית במובייל */
+    .features, .audience-cards {
         display: flex;
-        flex-direction: column;
-        align-items: center;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+    }
+    
+    /* סגנון מותאם לדוגמה */
+    .process-steps {
+        padding: 20px 0 40px;
+        background-color: #0d1e2c;
+        position: relative;
+    }
+    
+    .process-steps:after {
+        content: 'אין זה עובד';
+        position: absolute;
+        bottom: 10px;
+        left: 0;
+        right: 0;
+        text-align: center;
+        color: white;
+        font-weight: bold;
+        font-size: 1.3rem;
+    }
+    
+    .section-title {
+        color: white;
+        font-size: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .section-title:after {
+        background-color: #008199;
     }
     
     .feature-card, .step-card, .audience-card {
-        width: 100%;
-        max-width: 100%;
-        margin-bottom: 20px;
+        width: 45%;
+        min-width: 140px;
+        max-width: 45%;
+        margin-bottom: 15px;
+        padding: 15px 10px;
     }
     
     body {
         min-width: 320px !important;
         overflow-x: hidden !important;
         width: 100% !important;
+        background-color: #0d1e2c !important;
     }
     
     .container {
@@ -890,19 +934,28 @@ h1, h2, h3, h4, h5, h6, p, span, a, button, input, textarea, select, li {
     }
     
     .step-card {
-        min-width: 0 !important;
-        max-width: none !important;
-        flex: 1 !important;
-        margin: 0 !important;
-        padding: 10px 5px !important;
-        font-size: 0.85rem !important;
-        background-color: white !important;
-        border-radius: 8px !important;
-        box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08) !important;
-        text-align: center !important;
-        transition: transform 0.2s !important;
-        position: relative !important;
-        z-index: 1 !important;
+        width: 22%;
+        min-width: 60px;
+        max-width: 22%;
+        margin-bottom: 0;
+        padding: 10px 5px;
+        background-color: transparent;
+        box-shadow: none;
+        color: white;
+    }
+    
+    .step-card .icon i {
+        color: #008199;
+        font-size: 1.8rem;
+    }
+    
+    .step-card h3 {
+        font-size: 0.85rem;
+        margin: 5px 0;
+    }
+    
+    .step-card .step-number {
+        display: none;
     }
     
     .step-card:active {
@@ -979,22 +1032,23 @@ h1, h2, h3, h4, h5, h6, p, span, a, button, input, textarea, select, li {
     .audience-cards {
         display: grid !important;
         grid-template-columns: 1fr 1fr !important;
+        grid-gap: 15px !important;
         width: 100% !important;
-        padding: 5px 3px !important;
-        margin-bottom: 10px !important;
-        gap: 8px !important;
+        padding: 0 !important;
+        margin: 0 auto !important;
+        max-width: 90% !important;
     }
     
     .audience-card {
         min-width: 0 !important;
         max-width: none !important;
         margin: 0 !important;
-        padding: 10px 5px !important;
-        background-color: white !important;
-        border-radius: 8px !important;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08) !important;
+        padding: 15px 5px !important;
+        background-color: #f5f5f5 !important;
+        border-radius: 10px !important;
+        box-shadow: none !important;
         text-align: center !important;
-        transition: transform 0.2s !important;
+        transition: none !important;
         display: flex !important;
         flex-direction: column !important;
         align-items: center !important;
@@ -1006,17 +1060,17 @@ h1, h2, h3, h4, h5, h6, p, span, a, button, input, textarea, select, li {
     }
     
     .audience-card .icon {
-        font-size: 1.4rem !important;
-        color: var(--primary-color) !important;
-        background-color: rgba(0, 151, 167, 0.1) !important;
-        width: 45px !important;
-        height: 45px !important;
+        font-size: 1.7rem !important;
+        color: #008199 !important;
+        background-color: transparent !important;
+        width: 60px !important;
+        height: 60px !important;
         display: flex !important;
         align-items: center !important;
         justify-content: center !important;
-        border-radius: 8px !important;
-        margin: 0 auto 5px auto !important;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05) !important;
+        border-radius: 0 !important;
+        margin: 0 auto 8px auto !important;
+        box-shadow: none !important;
     }
     
     .audience-card h3 {
@@ -1037,8 +1091,83 @@ h1, h2, h3, h4, h5, h6, p, span, a, button, input, textarea, select, li {
         font-size: 14px;
     }
     
+    .deal-example {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        background-color: white;
+        border-radius: 10px;
+        padding: 15px;
+    }
+    
+    .product-image {
+        width: 40%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .product-details {
+        width: 55%;
+    }
+    
+    .live-deal {
+        background-color: #0d1e2c;
+        padding: 20px 0 40px;
+        position: relative;
+    }
+    
+    .live-deal:after {
+        content: 'דוגמה: KitchenStorm 550';
+        position: absolute;
+        bottom: 10px;
+        left: 0;
+        right: 0;
+        text-align: center;
+        color: white;
+        font-weight: bold;
+        font-size: 1.3rem;
+    }
+    
+    .live-deal .section-title {
+        color: white;
+    }
+    
+    .price-table {
+        border: none;
+        width: 100%;
+        margin: 0;
+    }
+    
+    .price-row {
+        background-color: white;
+        border: none;
+        border-bottom: 1px solid #f0f0f0;
+        padding: 8px 0;
+    }
+    
     .hero {
-        padding: 120px 0 80px;
+        padding: 80px 0 0;
+        background-color: #0d1e2c;
+        background-image: none;
+    }
+    
+    .hero:before {
+        content: none;
+    }
+    
+    .hero .container {
+        position: relative;
+        z-index: 1;
+        padding: 0;
+    }
+    
+    .hero-content {
+        max-width: none;
+        margin: 0;
+        padding: 0 20px 40px;
+        text-align: center;
     }
     
     .hero h1 {
